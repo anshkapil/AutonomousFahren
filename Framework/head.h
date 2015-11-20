@@ -28,7 +28,7 @@
 #define REAR_LEFT_ENC_READ REAR_RIGHT_ENC_READ+4
 #define FRONT_LEFT_ENC_READ REAR_LEFT_ENC_READ+4
 
-#define PWM_RESOLUTION 1000
+#define PWM_RESOLUTION 10000
 
 #define WHEEL_READY_MASK 0x8000
 #define ALL_WHEEL_FWD_MASK 0x0055
@@ -121,10 +121,8 @@ volatile unsigned int *pFrontLeftEncRead;
 volatile unsigned int *pHc_sr04;
 volatile unsigned int  *pUltraSoundArray;
 
-void init(void);
 void delay (volatile unsigned int del);
 unsigned int set_duty_cycle(volatile unsigned int *pTargetedWheel, unsigned int duty);
-unsigned int MeasureDistance(unsigned int ch);
 
 volatile unsigned char *pI2C;
 volatile unsigned char *pI2CReg;

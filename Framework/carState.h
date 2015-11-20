@@ -1,9 +1,12 @@
 
 #define PWM_ENABLE 10
 
-enum Component{
-	ULTRASOUND
-};
+typedef enum Component{
+	COMPONENT_ULTRASOUND,
+	COMPONENT_ACCELEROMETER,
+	COMPONENT_GYRO,
+	COMPONENT_TEMPERATURE
+} Component_type;
 
 enum car_state{
 	CAR_STATE_READY,
@@ -25,6 +28,7 @@ struct message{
 
 };
 
+
 enum route_command{
 	TURN_STRAIGHT,
 	TURN_RIGHT,
@@ -38,8 +42,8 @@ struct route_planner{
 
 };
 
-struct sensor_data{
 
-
-
-};
+typedef enum result{
+	RESULT_FAILURE,
+	RESULT_SUCCESS
+} Result;

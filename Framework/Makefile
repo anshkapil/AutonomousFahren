@@ -142,9 +142,7 @@ ACDS_VERSION := 12.1sp1
 ELF := Framework.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += hello_ucosii.c
-C_SRCS += head.c
-C_SRCS += framework_main.c
+C_SRCS := framework_main.c
 CXX_SRCS :=
 ASM_SRCS :=
 

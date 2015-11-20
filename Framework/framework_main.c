@@ -1,22 +1,11 @@
 #include <stdio.h>
 #include <io.h>
-#include "ultrasoundData.h"
+#include "head.h"
 #include "carState.h"
+#include "system.h"
+#include "alt_types.h"
 
 typedef struct sensor_data sensor_data;
-
-typedef enum Component{
-	COMPONENT_ULTRASOUND,
-	COMPONENT_ACCELEROMETER,
-	COMPONENT_GYRO,
-	COMPONENT_TEMPERATURE
-} Component_type;
-
-typedef enum result{
-	RESULT_FAILURE,
-	RESULT_SUCCESS
-} Result;
-
 
 void init(Component_type type){
 
@@ -66,7 +55,7 @@ void I2CRead(unsigned char I2CAddr, unsigned char RegAddr, unsigned int len, cha
 }
 
 
-unsigned float MeasureDistance(unsigned int i)
+float MeasureDistance(unsigned int i)
 {
 	float x = (float)pUltraSoundArray[i] * 330000/ALT_CPU_FREQ;
 	return x/2.0f ;
@@ -75,20 +64,21 @@ unsigned float MeasureDistance(unsigned int i)
 
 int getData(Component_type type , sensor_data* data)
 {
+	int i;
 	Result res = RESULT_FAILURE;
 	if(type == COMPONENT_ULTRASOUND)
 		{
-			if(*pHc_sr04 != 0xff)
-				return res;
+			while(*pHc_sr04 != 0xff);
+//				return res;
 
 			// Fire all ultrasound sensors
 			*pHc_sr04 = 0xff;	// 0xff: All sensors are activated and sending data
 
-			if(*pHc_sr04 != 0xff)
-				return res;
+			while(*pHc_sr04 != 0xff);
+//				return res;
 
 
-			for (int i = 0; i < NUMBER_OF_ULTRA_SOUND_DEVICES; i++)
+			for (i = 0; i < NUMBER_OF_ULTRA_SOUND_DEVICES; i++)
 			{
 				data->distance_ultrasound[i] =  MeasureDistance(i);
 			}
@@ -138,6 +128,8 @@ typedef enum
 
 int main()
 {
+	printf("Start");
+
 	sensor_data data = {0,};
 	pwm_enable = (volatile unsigned int*)(0x80000000 | PWM_ENABLE);
 	*pwm_enable = 0;
@@ -146,12 +138,12 @@ int main()
 	Result res = getData(COMPONENT_ULTRASOUND , &data);
 
 	if(res == RESULT_SUCCESS)
-		printf("Sensor 1: %f", data.distance_ultrasound[0]);
+		printf("Sensor 1: %f \n", data.distance_ultrasound[0]);
 
 	init(COMPONENT_ACCELEROMETER);
-	Result res = getData(COMPONENT_ACCELEROMETER , &data);
-	if(res == RESULT_SUCCESS)
-		printf("ACCELEROMETER: %f", data.distance_ultrasound[0]);
-
+	res = getData(COMPONENT_ACCELEROMETER , &data);
+//	if(res == RESULT_SUCCESS)
+//		printf("Accelerometer: %f\n", data.distance_ultrasound[0]);
+	printf("Done");
 	return 0;
 }
