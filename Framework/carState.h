@@ -18,15 +18,51 @@ enum car_state{
 
 struct sensor_data{
 	float distance_ultrasound[NUMBER_OF_ULTRA_SOUND_DEVICES];
+	float accelerometerData[3];
+	float gyroData[3];
+	float temperature;
 
 };
 
-struct message{
+typedef enum {
+	APP_LANE_DETECTION,
+	APP_PARKING,
+}commandSender;
+
+typedef enum {
+	LIGHTS_HEAD,
+	LIGHTS_SIGNAL_RIGHT,
+	LIGHTS_SIGNAL_LEFT,
+	LIGHTS_BRAKE
+}lightType;
+
+typedef enum {
+	LIGHTS_ON,
+	LIGHTS_OFF,
+	LIGHTS_BLINKING
+}lightState;
+
+typedef enum {
+
+	WHEELS,
+	LIGHTS
+
+}commandType;
 
 
-
+struct commandLight{
+	lightType type;
+	lightState state;
 
 };
+
+struct commandWheel{
+	float angle;
+	float speed;
+
+};
+
+void (*message)(commandSender sender,commandType type , void *params);
 
 
 enum route_command{
@@ -38,7 +74,7 @@ enum route_command{
 
 struct route_planner{
 
-
+// Can be a function with params as a list of commands
 
 };
 

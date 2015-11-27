@@ -16,9 +16,15 @@ void init(Component_type type){
 
 	if(type == COMPONENT_ACCELEROMETER || type == COMPONENT_GYRO)
 	{
+	    pI2C = (volatile unsigned char*)(I2C_SLAVE_ADDR);
+	    pI2CReg = (volatile unsigned char*)(I2C_REG_ADDR);
+	    pI2CRegWriteData = (volatile unsigned char*)(I2C_REG_WRITE_DATA);
+	    pI2CDataLen = (volatile unsigned char*)(I2C_DATALENGTH_ADDR);
+	    pI2CCmd = (volatile unsigned char*)(I2C_CMD_ADDR);
+	    pI2CDataAvailable = (volatile unsigned char*)(I2C_DATA_AVAILABLE_ADDR);
+
 		I2CWrite(MPU_SLAVE_ADDRESS, 0x6b, 0x0); // Enabling the sensor
-//		I2CRead(MPU_SLAVE_ADDRESS, 0x75, 1, cBuff); // Reading 1 byte
-//		printf("WhoAmI = %x\n", (unsigned int)cBuff[0]);
+
 	}
 
 
@@ -61,6 +67,13 @@ float MeasureDistance(unsigned int i)
 	return x/2.0f ;
 }
 
+void delay (volatile unsigned int del)
+{
+	while (del != 0)
+	{
+		del --;
+	}
+}
 
 int getData(Component_type type , sensor_data* data)
 {
@@ -69,14 +82,11 @@ int getData(Component_type type , sensor_data* data)
 	if(type == COMPONENT_ULTRASOUND)
 		{
 			while(*pHc_sr04 != 0xff);
-//				return res;
 
 			// Fire all ultrasound sensors
 			*pHc_sr04 = 0xff;	// 0xff: All sensors are activated and sending data
 
 			while(*pHc_sr04 != 0xff);
-//				return res;
-
 
 			for (i = 0; i < NUMBER_OF_ULTRA_SOUND_DEVICES; i++)
 			{
@@ -87,34 +97,20 @@ int getData(Component_type type , sensor_data* data)
 
 	if(type == COMPONENT_ACCELEROMETER)
 	{
-		short AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ, x, y, z;
 		char cBuff[32];
-
 		I2CRead(MPU_SLAVE_ADDRESS, 0x3B, 14, cBuff);
 
-		AcX = (cBuff[0] << 8) | (cBuff[1] & 0xff);
-		AcY = (cBuff[2] << 8) | (cBuff[3] & 0xff);
-		AcZ = cBuff[4] << 8 | (cBuff[5] & 0xff);
-		//AcZ = cBuff[5];
+		data->accelerometerData[0] =(float)((cBuff[0] << 8) | (cBuff[1] & 0xff));
+		data->accelerometerData[1] =(float)((cBuff[2] << 8) | (cBuff[3] & 0xff));
+		data->accelerometerData[2] =(float)((cBuff[4] << 8) | (cBuff[5] & 0xff));
 
-		Tmp = (cBuff[6] << 8) | (cBuff[7] & 0xff);
+		data->temperature = (float)(((cBuff[6] << 8) | (cBuff[7] & 0xff))/340 + 36.53);
 
-		GyX = (cBuff[8] << 8) | (cBuff[9] & 0xff);
-		GyY = (cBuff[10] << 8) | (cBuff[11] & 0xff);
-		GyZ = (cBuff[12] << 8) | (cBuff[13] & 0xff);
+		data->gyroData[0] =(float)((cBuff[8] << 8) | (cBuff[9] & 0xff));
+		data->gyroData[1] =(float)((cBuff[10] << 8) | (cBuff[11] & 0xff));
+		data->gyroData[2] =(float)((cBuff[12] << 8) | (cBuff[13] & 0xff));
 
-
-		printf("AcX = %d\n", AcX);
-		printf("AcY = %d\n", AcY);
-		printf("AcZ = %d\n", AcZ);
-//		printf("%u,%u\n", cBuff[4], (cBuff[5] & 0xff));
-
-		printf("Tmp = %f\n", (float)Tmp/340 + 36.53);
-
-		printf("GyX = %d\n", GyX);
-		printf("GyY = %d\n", GyY);
-		printf("GyZ = %d\n", GyZ);
-
+		res = RESULT_SUCCESS;
 	}
 
 	return res;
@@ -142,8 +138,18 @@ int main()
 
 	init(COMPONENT_ACCELEROMETER);
 	res = getData(COMPONENT_ACCELEROMETER , &data);
-//	if(res == RESULT_SUCCESS)
-//		printf("Accelerometer: %f\n", data.distance_ultrasound[0]);
+	if(res == RESULT_SUCCESS){
+
+		printf("AcX = %d\n", data.accelerometerData[0]);
+		printf("AcY = %d\n", data.accelerometerData[1]);
+		printf("AcZ = %d\n", data.accelerometerData[2]);
+
+		printf("Temp = %f\n", data.temperature);
+
+		printf("GyX = %d\n", data.gyroData[0]);
+		printf("GyY = %d\n", data.gyroData[1]);
+		printf("GyZ = %d\n", data.gyroData[2]);
+	}
 	printf("Done");
 	return 0;
 }
