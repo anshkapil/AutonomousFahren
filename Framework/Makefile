@@ -143,7 +143,7 @@ ELF := Framework.elf
 
 # Paths to C, C++, and assembly source files.
 C_SRCS := framework_main.c
-CXX_SRCS :=
+CXX_SRCS := Command.cpp
 ASM_SRCS :=
 
 

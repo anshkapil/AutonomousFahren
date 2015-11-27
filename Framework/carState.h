@@ -79,6 +79,7 @@ struct route_planner{
 };
 
 
+
 typedef enum result{
 	RESULT_FAILURE,
 	RESULT_SUCCESS
