@@ -4,6 +4,7 @@
 #include "carState.h"
 #include "system.h"
 #include "alt_types.h"
+#include "Command.h"
 
 typedef struct sensor_data sensor_data;
 
@@ -124,6 +125,9 @@ typedef enum
 
 int main()
 {
+	Command* c1 = (Command*) (0x80000000 |STATE_CMD_MEMORY_BASE);
+
+
 	printf("Start");
 
 	sensor_data data = {0,};
