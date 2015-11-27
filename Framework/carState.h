@@ -1,3 +1,4 @@
+#include "head.h"
 
 #define PWM_ENABLE 10
 
@@ -26,7 +27,7 @@ struct sensor_data{
 
 typedef enum {
 	APP_LANE_DETECTION,
-	APP_PARKING,
+	APP_PARKING
 }commandSender;
 
 typedef enum {
@@ -45,7 +46,8 @@ typedef enum {
 typedef enum {
 
 	WHEELS,
-	LIGHTS
+	LIGHTS,
+	EMERGENCY
 
 }commandType;
 
@@ -60,6 +62,10 @@ struct commandWheel{
 	float angle;
 	float speed;
 
+};
+
+struct commandEmergency {
+	bool isEmergency;
 };
 
 void (*message)(commandSender sender,commandType type , void *params);
