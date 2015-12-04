@@ -9,13 +9,13 @@ typedef enum Component{
 	COMPONENT_TEMPERATURE
 } Component_type;
 
-enum car_state{
+typedef enum car_state{
 	CAR_STATE_READY,
 	CAR_STATE_LANE_DETECTION,
 	CAR_STATE_PARKING,
 	CAR_STATE_BUSY,
 	CAR_STATE_EMERGENCY
-};
+} car_state;
 
 struct sensor_data{
 	float distance_ultrasound[NUMBER_OF_ULTRA_SOUND_DEVICES];
@@ -25,7 +25,7 @@ struct sensor_data{
 
 };
 
-typedef enum {
+typedef enum command_Sender{
 	APP_LANE_DETECTION,
 	APP_PARKING
 }commandSender;
@@ -43,14 +43,21 @@ typedef enum {
 	LIGHTS_BLINKING
 }lightState;
 
-typedef enum {
 
-	WHEELS,
-	LIGHTS,
-	EMERGENCY
+typedef enum command_Type{
 
-}commandType;
+	TYPE_WHEELS,
+	TYPE_LIGHTS,
+	TYPE_EMERGENCY,
+	TYPE_PARKING
 
+} commandType;
+
+
+struct commandParking {
+	float x;
+	float y;
+};
 
 struct commandLight{
 	lightType type;
@@ -68,15 +75,12 @@ struct commandEmergency {
 	bool isEmergency;
 };
 
-void (*message)(commandSender sender,commandType type , void *params);
-
-
-enum route_command{
+typedef enum route_command{
 	TURN_STRAIGHT,
 	TURN_RIGHT,
 	TURN_LEFT,
 	PARK
-};
+} route_command;
 
 struct route_planner{
 
@@ -90,3 +94,6 @@ typedef enum result{
 	RESULT_FAILURE,
 	RESULT_SUCCESS
 } Result;
+
+
+

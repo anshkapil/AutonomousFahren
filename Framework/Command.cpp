@@ -7,10 +7,10 @@
 
 #include "Command.h"
 
-Command::Command(commandType type, commandSender sender, void* command) {
-	this.type = type;
-	this.sender = sender;
-	this.command = command;
+Command::Command(commandType t, commandSender s, void* comm) {
+	types = t;
+	send = s;
+	commands = comm;
 }
 
 Command::~Command() {
@@ -18,13 +18,13 @@ Command::~Command() {
 }
 
 commandType Command::getCommandType() {
-	return type;
+	return types;
 }
 
 commandSender Command::getCommandSender() {
-	return sender;
+	return send;
 }
 
 void* Command::getCommand() {
-	return command;
+	return commands;
 }

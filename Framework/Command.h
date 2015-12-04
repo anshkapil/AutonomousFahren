@@ -16,17 +16,19 @@
 #define LANE_DETECTION_OFFSET 160
 #define OBSTACLE_AVOIDANCE_OFFSET 210
 
+
 class Command {
 private:
-	commandType type;
-	commandSender sender;
-	void* command;
+	commandType types;
+	commandSender send;
+	void* commands;
 public:
-	commandType getCommandType() {};
-	commandSender getCommandSender() {};
-	void* getCommand() {};
-	Command(commandType type, commandSender sender, void* command) {};
+	commandType getCommandType();
+	commandSender getCommandSender();
+	void* getCommand();
+	Command(commandType t, commandSender s, void* comm);
 	virtual ~Command();
+
 };
 
 
