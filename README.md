@@ -1,1 +1,7 @@
-#Vehical Management and control for Autonomous car
+#Vehical Management and control 
+#Autonomous driving Seminar WS15-16
+
+$Authors: 
+Ansh Kapil
+Diana Iacob
+Julia Kreyssig
