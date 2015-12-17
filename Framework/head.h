@@ -1,16 +1,17 @@
 /*
  * head.h
  *
- *  Created on: 04.07.2014
- *      Author: Hardik Shah
+ *  Created on: Dec 11, 2015
+ *      Author: Ansh Kapil
  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifndef HEAD_H_
 #define HEAD_H_
 
-//#include <system.h>
-//#include <alt_types.h>
 
 #define PWM_ENABLE MOTOR_CONTROL_0_BASE
 #define FRONT_RIGHT_DUTY_SET PWM_ENABLE+4
@@ -133,5 +134,10 @@ volatile unsigned char *pI2CDataAvailable;
 
 void I2CWrite(unsigned char I2CAddr, unsigned char RegAddr, unsigned char data);
 void I2CRead(unsigned char I2CAddr, unsigned char RegAddr, unsigned int len, char* cBuff);
+float MeasureDistance(unsigned int ch);
+void init(void);
 
 #endif /* HEAD_H_ */
+#ifdef __cplusplus
+}
+#endif

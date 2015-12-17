@@ -5,8 +5,11 @@
  *      Author: Julia
  */
 
-#include "carState.h"
+#include "commandTypes.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifndef COMMAND_H_
 #define COMMAND_H_
@@ -17,19 +20,15 @@
 #define OBSTACLE_AVOIDANCE_OFFSET 210
 
 
-class Command {
-private:
-	commandType types;
-	commandSender send;
-	void* commands;
-public:
-	commandType getCommandType();
-	commandSender getCommandSender();
-	void* getCommand();
-	Command(commandType t, commandSender s, void* comm);
-	virtual ~Command();
-
+struct Command {
+	commandType __type;
+	commandSender __sender;
+	void* __command;
 };
 
 
+
 #endif /* COMMAND_H_ */
+#ifdef __cplusplus
+}
+#endif

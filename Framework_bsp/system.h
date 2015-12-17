@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'DE0_Nano_SOPC'
  * SOPC Builder design path: C:/AutoFahren/DE0_Nano_SOPC.sopcinfo
  *
- * Generated: Fri Oct 30 16:52:17 CET 2015
+ * Generated: Thu Dec 17 20:10:44 CET 2015
  */
 
 /*
@@ -133,8 +133,10 @@
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2
+#define __ALTERA_UP_AVALON_RS232
 #define __ALTPLL
 #define __HC_SR04
+#define __LIGHTING
 #define __MOTOR_CONTROL
 #define __MP6050
 
@@ -247,6 +249,20 @@
 
 
 /*
+ * lighting_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_lighting_0 lighting
+#define LIGHTING_0_BASE 0x2002000
+#define LIGHTING_0_IRQ -1
+#define LIGHTING_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define LIGHTING_0_NAME "/dev/lighting_0"
+#define LIGHTING_0_SPAN 4
+#define LIGHTING_0_TYPE "lighting"
+
+
+/*
  * manuer_queue configuration
  *
  */
@@ -301,6 +317,20 @@
 #define MP6050_0_NAME "/dev/mp6050_0"
 #define MP6050_0_SPAN 16
 #define MP6050_0_TYPE "mp6050"
+
+
+/*
+ * rs232_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_rs232_0 altera_up_avalon_rs232
+#define RS232_0_BASE 0x2002008
+#define RS232_0_IRQ -1
+#define RS232_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define RS232_0_NAME "/dev/rs232_0"
+#define RS232_0_SPAN 8
+#define RS232_0_TYPE "altera_up_avalon_rs232"
 
 
 /*

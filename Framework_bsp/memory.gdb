@@ -3,7 +3,7 @@
 # Machine generated for CPU 'cpu' in SOPC Builder design 'DE0_Nano_SOPC'
 # SOPC Builder design path: C:/AutoFahren/DE0_Nano_SOPC.sopcinfo
 #
-# Generated: Fri Oct 30 16:52:17 CET 2015
+# Generated: Thu Dec 17 20:10:44 CET 2015
 
 # DO NOT MODIFY THIS FILE
 #

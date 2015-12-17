@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>ucosii</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Oct 30, 2015 4:52:13 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1446220333611</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Dec 17, 2015 8:10:42 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1450379442155</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\AutoFahren\software\Framework_bsp</BspGeneratedLocation>
         <BspSettingsFile>.\settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\AutoFahren\DE0_Nano_SOPC.sopcinfo</SopcDesignFile>
@@ -1701,6 +1701,18 @@
                 <addressRange>0x02000000 - 0x020007FF</addressRange>
                 <addressSpan>2048</addressSpan>
                 <attributes>flash, memory, non-volatile</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>lighting_0</slaveDescriptor>
+                <addressRange>0x02002000 - 0x02002003</addressRange>
+                <addressSpan>4</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>rs232_0</slaveDescriptor>
+                <addressRange>0x02002008 - 0x0200200F</addressRange>
+                <addressSpan>8</addressSpan>
+                <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>manuer_queue</slaveDescriptor>

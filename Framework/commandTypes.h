@@ -1,6 +1,21 @@
-#include "head.h"
+/*
+ * commandTypes.h
+ *
+ *  Created on: Dec 11, 2015
+ *      Author: Ansh Kapil
+ */
 
-#define PWM_ENABLE 10
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifndef COMMANDTYPES_H_
+#define COMMANDTYPES_H_
+
+#include"head.h"
+#include"alt_types.h"
+
 
 typedef enum Component{
 	COMPONENT_ULTRASOUND,
@@ -30,17 +45,17 @@ typedef enum command_Sender{
 	APP_PARKING
 }commandSender;
 
-typedef enum {
-	LIGHTS_HEAD,
-	LIGHTS_SIGNAL_RIGHT,
-	LIGHTS_SIGNAL_LEFT,
-	LIGHTS_BRAKE
+typedef enum lightType{
+	TYPE_LIGHTS_HEAD,
+	TYPE_LIGHTS_SIGNAL_RIGHT,
+	TYPE_LIGHTS_SIGNAL_LEFT,
+	TYPE_LIGHTS_BRAKE
 }lightType;
 
-typedef enum {
-	LIGHTS_ON,
-	LIGHTS_OFF,
-	LIGHTS_BLINKING
+typedef enum light_State{
+	STATE_LIGHTS_ON,
+	STATE_LIGHTS_OFF,
+	STATE_LIGHTS_BLINKING
 }lightState;
 
 
@@ -72,7 +87,7 @@ struct commandWheel{
 };
 
 struct commandEmergency {
-	bool isEmergency;
+	int isEmergency;
 };
 
 typedef enum route_command{
@@ -88,12 +103,14 @@ struct route_planner{
 
 };
 
-
-
 typedef enum result{
 	RESULT_FAILURE,
 	RESULT_SUCCESS
 } Result;
 
+#endif /* COMMANDTYPES_H_ */
 
 
+#ifdef __cplusplus
+}
+#endif

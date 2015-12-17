@@ -1,23 +1,24 @@
-#include "Command.h"
-#include "carState.h"
+/*
+ * utilities.h
+ *
+ *  Created on: Dec 11, 2015
+ *      Author: Ansh Kapil
+ */
 
-commandSender lastCommandSender;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-class CommandManager {
-private:
-	commandSender sender;
-public:
-	void sendCommand(commandType type, void* command);
-	CommandManager(commandSender sender);
+#ifndef UTILITIES_H_
+#define UTILITIES_H_
 
-	commandSender getLastCommandSender();
+#include "commandTypes.h"
+#include "system.h"
 
-	Command* readLastCommand();
-};
 
-class DataManager {
-public:
-	sensor_data getData();
+Result getData(Component_type type , struct sensor_data* data);
 
-	void setData(sensor_data data);
-};
+#endif /* UTILITIES_H_ */
+#ifdef __cplusplus
+}
+#endif

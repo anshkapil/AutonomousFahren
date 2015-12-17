@@ -1,15 +1,12 @@
-obj/default/framework_main.o: framework_main.cpp \
+obj/default/framework_main.o: framework_main.c \
   ../Framework_bsp//HAL/inc/io.h ../Framework_bsp//HAL/inc/alt_types.h \
-  head.h carState.h ../Framework_bsp/system.h ../Framework_bsp/linker.h \
-  ../Framework_bsp//HAL/inc/alt_types.h Command.h Utilities.h
+  ../Framework_bsp/system.h ../Framework_bsp/linker.h \
+  ../Framework_bsp//HAL/inc/alt_types.h commandTypes.h head.h DataMgr.h \
+  CommandMgr.h Command.h utilities.h
 
 ../Framework_bsp//HAL/inc/io.h:
 
 ../Framework_bsp//HAL/inc/alt_types.h:
-
-head.h:
-
-carState.h:
 
 ../Framework_bsp/system.h:
 
@@ -17,6 +14,14 @@ carState.h:
 
 ../Framework_bsp//HAL/inc/alt_types.h:
 
+commandTypes.h:
+
+head.h:
+
+DataMgr.h:
+
+CommandMgr.h:
+
 Command.h:
 
-Utilities.h:
+utilities.h:
