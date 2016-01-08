@@ -12,7 +12,11 @@
 					<folderInfo id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1031937503." name="/" resourcePath="">
 						<toolChain id="altera.nios2.mingw.gcc4.775389002" name="MinGW Nios II GCC4" superClass="altera.nios2.mingw.gcc4">
 							<targetPlatform id="altera.nios2.mingw.gcc4.966387450" name="Nios II" superClass="altera.nios2.mingw.gcc4"/>
-							<builder buildPath="${workspace_loc://Framework}" id="cdt.managedbuild.target.gnu.builder.cygwin.base.510451354" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.cygwin.base"/>
+							<builder buildPath="${workspace_loc://Framework}" id="cdt.managedbuild.target.gnu.builder.cygwin.base.510451354" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.cygwin.base">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name=""/>
+								</outputEntries>
+							</builder>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.cygwin.base.809746729" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.cygwin.base">
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.698161619" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -66,8 +70,8 @@
 									<listOptionValue builtIn="false" value="__UINT_FAST8_MAX__"/>
 									<listOptionValue builtIn="false" value="__DEC64_MAX_EXP__"/>
 									<listOptionValue builtIn="false" value="__GXX_MERGED_TYPEINFO_NAMES"/>
-									<listOptionValue builtIn="false" value="__INT16_MAX__"/>
 									<listOptionValue builtIn="false" value="__UINT16_C(c)"/>
+									<listOptionValue builtIn="false" value="__INT16_MAX__"/>
 									<listOptionValue builtIn="false" value="__LDBL_MAX_EXP__"/>
 									<listOptionValue builtIn="false" value="__UINT_LEAST64_MAX__"/>
 									<listOptionValue builtIn="false" value="__FLT_MANT_DIG__"/>
@@ -281,8 +285,8 @@
 									<listOptionValue builtIn="false" value="__UINT_FAST8_MAX__"/>
 									<listOptionValue builtIn="false" value="__DEC64_MAX_EXP__"/>
 									<listOptionValue builtIn="false" value="__GXX_MERGED_TYPEINFO_NAMES"/>
-									<listOptionValue builtIn="false" value="__INT16_MAX__"/>
 									<listOptionValue builtIn="false" value="__UINT16_C(c)"/>
+									<listOptionValue builtIn="false" value="__INT16_MAX__"/>
 									<listOptionValue builtIn="false" value="__LDBL_MAX_EXP__"/>
 									<listOptionValue builtIn="false" value="__UINT_LEAST64_MAX__"/>
 									<listOptionValue builtIn="false" value="__FLT_MANT_DIG__"/>
@@ -328,8 +332,8 @@
 									<listOptionValue builtIn="false" value="__INT_FAST16_MAX__"/>
 									<listOptionValue builtIn="false" value="__UINT16_MAX__"/>
 									<listOptionValue builtIn="false" value="__UINT_LEAST8_TYPE__"/>
-									<listOptionValue builtIn="false" value="__UINT_FAST32_TYPE__"/>
 									<listOptionValue builtIn="false" value="unix"/>
+									<listOptionValue builtIn="false" value="__UINT_FAST32_TYPE__"/>
 									<listOptionValue builtIn="false" value="__stdcall"/>
 									<listOptionValue builtIn="false" value="__FLT_EVAL_METHOD__"/>
 									<listOptionValue builtIn="false" value="_X86_"/>
@@ -449,6 +453,10 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<sourceEntries>
+						<entry excluding="dmp|dmp-mpu6050" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="dmp"/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1031937503" moduleId="org.eclipse.cdt.core.settings" name="Nios II">

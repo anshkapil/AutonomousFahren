@@ -147,7 +147,11 @@ C_SRCS += DataMgr.c
 C_SRCS += framework_main.c
 C_SRCS += head.c
 C_SRCS += utilities.c
-CXX_SRCS :=
+C_SRCS += dmp/HARDWARE/eMPL/inv_mpu.c
+C_SRCS += dmp/HARDWARE/eMPL/inv_mpu_dmp_motion_driver.c
+CXX_SRCS += cppConnector.cpp
+CXX_SRCS += dmp-mpu6050/MPU6050.cpp
+CXX_SRCS += dmp-mpu6050/I2Cdev.cpp
 ASM_SRCS :=
 
 

@@ -1,4 +1,14 @@
 
+
+#include "cppConnector.h"
+
+int main() {
+    launch();
+
+    return 0;
+}
+
+/*
 #include <stdio.h>
 #include <io.h>
 #include "system.h"
@@ -88,3 +98,4 @@ int main(void)
 
 	return 0;
 }
+*/
